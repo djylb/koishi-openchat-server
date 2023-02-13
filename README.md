@@ -6,7 +6,7 @@
 ## 前提准备
 
 - 搭建一个可以运行的koshi服务器
-- 拥有一个openai的账号 `[https://platform.openai.com/account/api-keys](https://platform.openai.com/account/api-keys)`
+- 拥有一个openai的账号 https://platform.openai.com/account/api-keys
 - 拥有一台服务器并拥有python环境（如果不需要在服务器在搭建可以不需要）
 
 # **docker 搭建 server （推荐）By D-Jy**
