@@ -1,0 +1,6 @@
+python-dotenv
+fastapi
+pydantic
+revChatGPT
+uvicorn
+EdgeGPT
