@@ -1,7 +1,8 @@
 # koishi-openchat-server
 
+2023.2.14 更新 修复返回未知错误。
+
 一个适用于 https://forum.koishi.xyz/t/topic/59 的后端API接口。
-项目中包含一些冗余用于兼容后续的 EdgeGPT。
 
 ## 前提准备
 
@@ -18,11 +19,8 @@ git clone https://github.com/D-Jy-lab/koishi-openchat-server.git
 # 进入项目
 cd koishi-openchat-server
 
-# 复制配置文件
-cp .env.sample .env
-
-# 修改配置文件，填入OpenAI账号
-nano .env
+# 修改chat.py文件，填入OpenAI账号
+nano chat.py
 
 # 编译容器
 docker build -t duan2001/openchat .
@@ -71,11 +69,8 @@ git clone https://github.com/D-Jy-lab/koishi-openchat-server.git
 # 进入项目
 cd koishi-openchat-server
 
-# 复制配置文件
-cp .env.sample .env
-
-# 修改配置文件，填入OpenAI账号
-nano .env
+# 修改chat.py文件，填入OpenAI账号
+nano chat.py
 
 # 创建虚拟环境
 virtualenv .venv
