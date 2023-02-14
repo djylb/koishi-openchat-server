@@ -1,10 +1,7 @@
 from revChatGPT.V1 import Chatbot
-import sys
-import os
 from fastapi import FastAPI
-import uvicorn
 from pydantic import BaseModel
-import asyncio
+import uvicorn
 
 #### 手动配置时删除以下代码
 from dotenv import load_dotenv, find_dotenv
@@ -56,12 +53,14 @@ async def chatGPT(request: ChatRequest):
   answer = ""
   try:
     for data in chatbot.ask(
+    for data in chatbot.ask(
       prompt,
       conversation_id=chatbot.config.get("conversation"),
       parent_id=chatbot.config.get("parent_id"),
     ):
-      print(data["message"], end="", flush = True)
-      answer = answer + data["message"]
+      #print(data["message"], end="", flush = True)
+      answer = data["message"]
+    print(data["message"])
     print()
   except:
     answer = "ERROR"
