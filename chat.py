@@ -1,4 +1,4 @@
-from revChatGPT.V2 import Chatbot
+from revChatGPT.V1 import Chatbot
 import sys
 import os
 from fastapi import FastAPI
@@ -20,7 +20,11 @@ PORT = int(os.getenv("PORT"))
 app = FastAPI()
 
 # 手动配置时删除下行代码，并取消下面的注释并修改配置文件
-chatbot = Chatbot(email=EMAIL, password=PASSWORD)
+#chatbot = Chatbot(email=EMAIL, password=PASSWORD) # v2版本api
+chatbot = Chatbot(config={
+  "email": EMAIL,
+  "password": PASSWORD
+})
 
 # 手动配置时取消注释,并按需求配置参数
 ''' 
@@ -51,10 +55,13 @@ async def chatGPT(request: ChatRequest):
     return {"message": "OK"}
   answer = ""
   try:
-    async for line in chatbot.ask(prompt):
-      print(line["choices"][0]["text"].replace("<|im_end|>", ""), end="")
-      answer = answer + line["choices"][0]["text"].replace("<|im_end|>", "")
-      sys.stdout.flush()
+    for data in chatbot.ask(
+      prompt,
+      conversation_id=chatbot.config.get("conversation"),
+      parent_id=chatbot.config.get("parent_id"),
+    ):
+      print(data["message"], end="", flush = True)
+      answer = answer + data["message"]
     print()
   except:
     answer = "ERROR"
