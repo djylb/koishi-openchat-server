@@ -3,38 +3,15 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 import uvicorn
 
-#### 手动配置时删除以下代码
-from dotenv import load_dotenv, find_dotenv
-
-load_dotenv(verbose=True)
-
-EMAIL = os.getenv("EMAIL")
-PASSWORD = os.getenv("PASSWORD")
-HOST = os.getenv("HOST")
-PORT = int(os.getenv("PORT"))
-####
-
 app = FastAPI()
 
-# 手动配置时删除下行代码，并取消下面的注释并修改配置文件
-#chatbot = Chatbot(email=EMAIL, password=PASSWORD) # v2版本api
-chatbot = Chatbot(config={
-  "email": EMAIL,
-  "password": PASSWORD
-})
-
-# 手动配置时取消注释,并按需求配置参数
-''' 
 HOST = "0.0.0.0"
 PORT = 8006
 
-chatbot = Chatbot(
-    email="",
-    password="",
-    # paid=True,
-    # proxy="http://127.0.0.1:7890",
-)
-'''
+chatbot = Chatbot(config={
+  "email": "<your email>",
+  "password": "your password"
+})
 
 class ChatRequest(BaseModel):
   prompt: str
@@ -53,7 +30,6 @@ async def chatGPT(request: ChatRequest):
   answer = ""
   try:
     for data in chatbot.ask(
-    for data in chatbot.ask(
       prompt,
       conversation_id=chatbot.config.get("conversation"),
       parent_id=chatbot.config.get("parent_id"),
@@ -65,7 +41,6 @@ async def chatGPT(request: ChatRequest):
   except:
     answer = "ERROR"
     pass
-
   return {"message": answer}
 
 if __name__ == "__main__":
