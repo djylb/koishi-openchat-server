@@ -1,6 +1,7 @@
 # koishi-openchat-server
 
 2023.2.14 更新 修复返回未知错误。
+
 2023.2.16 更新 优化输出，优化体积，修复损坏的重置功能。
 
 一个适用于 https://forum.koishi.xyz/t/topic/59 的后端API接口。
