@@ -16,11 +16,8 @@ RUN apt-get update -qqy \
 	python3-dev \
 	python3-lxml \
 	python3-pip \
-	pkg-config \
-	libldap2-dev \
 	libssl-dev \
-	libsasl2-dev \
-	libsasl2-modules \
+	pkg-config \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY . /srv/openchat/
