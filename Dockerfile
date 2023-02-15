@@ -6,7 +6,6 @@ EXPOSE 8006
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
-
 RUN echo 'APT::Get::Clean=always;' >> /etc/apt/apt.conf.d/99AutomaticClean
 
 RUN apt-get update -qqy \
@@ -29,7 +28,6 @@ RUN python3 -m venv venv && \
 	. venv/bin/activate && \
  	pip3 install -U pip && \
 	pip3 install wheel && \
-	pip3 install -r requirements.txt && \
 	pip3 install --upgrade  -r requirements.txt && \
 	pip3 cache purge && \
 	chown -R www-data:www-data /srv/openchat
