@@ -1,6 +1,7 @@
 # koishi-openchat-server
 
 2023.2.14 更新 修复返回未知错误。
+2023.2.16 更新 优化输出，优化体积，修复损坏的重置功能。
 
 一个适用于 https://forum.koishi.xyz/t/topic/59 的后端API接口。
 
@@ -36,19 +37,17 @@ docker run -d --name=openchat --restart=always -p 8006:8006 duan2001/openchat
 
 - 本地需要一个koishi的服务器
 
-进入到官方插件的地址 @42
+官方插件的地址 @42 [https://github.com/MirrorCY/openchat](https://github.com/MirrorCY/openchat)
 
-[https://github.com/MirrorCY/openchat](https://github.com/MirrorCY/openchat)
-
-只需下载chat.py 和 requirments.txt 文件放入工作文件夹中
-打开chat.py文件中按说明修改文件。
+只需下载chat.py 文件放入工作文件夹中
+打开chat.py文件填入账号密码。
 
 新建一个Python运行环境 venv
 
 ```python
 virutalenv venv
 souce venv/bin/activate
-pip install -r requirments.txt
+pip install --upgrade revChatGPT fastapi uvicorn
 python chat.py
 ```
 
